@@ -20,6 +20,7 @@ const int HEIGHT = 600;
 #include "Licence.h"
 #include "Splash.h"
 #include "Menu.h"
+#include "Help.h"
 
 
 
@@ -67,6 +68,7 @@ private:
 	Licence m_licence;
 	Splash m_splash;
 	Menu m_menu;
+	Help m_help;
 	
 };
 

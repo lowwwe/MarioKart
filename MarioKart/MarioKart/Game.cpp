@@ -25,6 +25,7 @@ Game::Game() :
 	m_licence.intialise(m_gameFont);
 	m_splash.initialise(m_gameFont);
 	m_menu.initialise(m_gameFont);
+	m_help.initalise(m_gameFont);
 }
 
 /// <summary>
@@ -89,6 +90,7 @@ void Game::processEvents()
 			m_menu.processEvents(newEvent);
 			break;
 		case GameMode::Help:
+			m_help.processEvents(newEvent);
 			break;
 		case GameMode::GamePlay:
 			break;
@@ -137,6 +139,7 @@ void Game::update(sf::Time t_deltaTime)
 	case GameMode::Menu:
 		break;
 	case GameMode::Help:
+		m_help.update(t_deltaTime);
 		break;
 	case GameMode::GamePlay:
 		break;
@@ -167,6 +170,7 @@ void Game::render()
 		m_menu.render(m_window);
 		break;
 	case GameMode::Help:
+		m_help.render(m_window);
 		break;
 	case GameMode::GamePlay:
 		break;
