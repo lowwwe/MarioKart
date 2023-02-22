@@ -22,6 +22,7 @@ Game::Game() :
 {
 	setupFontAndText(); // load font 
 	m_licence.intialise(m_gameFont);
+	m_splash.initialise(m_gameFont);
 }
 
 /// <summary>
@@ -80,6 +81,7 @@ void Game::processEvents()
 		case GameMode::Licence:
 			break;
 		case GameMode::Splash:
+			m_splash.processEvents(newEvent);
 			break;
 		case GameMode::Menu:
 			break;
@@ -153,6 +155,7 @@ void Game::render()
 		m_licence.render(m_window);
 		break;
 	case GameMode::Splash:
+		m_splash.render(m_window);
 		break;
 	case GameMode::Menu:
 		break;

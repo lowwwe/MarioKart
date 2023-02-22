@@ -11,6 +11,7 @@
 /// </summary>
 #include <SFML/Graphics.hpp>
 #include "Licence.h"
+#include "Splash.h"
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
@@ -55,6 +56,7 @@ private:
 	bool m_exitGame; // control exiting game
 
 	Licence m_licence;
+	Splash m_splash;
 	
 };
 
