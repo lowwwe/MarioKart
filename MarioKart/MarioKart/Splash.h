@@ -8,7 +8,7 @@ class Splash
 	public:
 		void initialise(sf::Font& t_font);
 		void render(sf::RenderWindow& t_window);
-		void update(sf::Time t_deltaTime);
+		
 		void processEvents(sf::Event t_event);
 
 private:
