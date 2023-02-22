@@ -10,6 +10,7 @@
 
 
 GameMode Game::s_currentMode = GameMode::Licence;
+bool Game::m_exitGame{ false }; //when true game will exit
 /// <summary>
 /// default constructor
 /// setup the window properties
@@ -17,12 +18,13 @@ GameMode Game::s_currentMode = GameMode::Licence;
 /// load and setup the image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
-	m_exitGame{false} //when true game will exit
+	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" }
+	
 {
 	setupFontAndText(); // load font 
 	m_licence.intialise(m_gameFont);
 	m_splash.initialise(m_gameFont);
+	m_menu.initialise(m_gameFont);
 }
 
 /// <summary>
@@ -84,6 +86,7 @@ void Game::processEvents()
 			m_splash.processEvents(newEvent);
 			break;
 		case GameMode::Menu:
+			m_menu.processEvents(newEvent);
 			break;
 		case GameMode::Help:
 			break;
@@ -117,7 +120,10 @@ void Game::processKeys(sf::Event t_event)
 /// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(sf::Time t_deltaTime)
 {
-	
+	if (m_exitGame)
+	{
+		m_window.close();
+	}
 
 	switch (s_currentMode)
 	{
@@ -158,6 +164,7 @@ void Game::render()
 		m_splash.render(m_window);
 		break;
 	case GameMode::Menu:
+		m_menu.render(m_window);
 		break;
 	case GameMode::Help:
 		break;

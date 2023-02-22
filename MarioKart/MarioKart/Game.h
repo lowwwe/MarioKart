@@ -9,12 +9,20 @@
 /// same as #pragma once
 /// Don't forget the endif at the bottom
 /// </summary>
+/// 
+/// 
+const int WIDTH = 800;
+const int HEIGHT = 600;
+
+
+
 #include <SFML/Graphics.hpp>
 #include "Licence.h"
 #include "Splash.h"
+#include "Menu.h"
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
+
+
 
 
 enum class GameMode
@@ -39,6 +47,7 @@ public:
 	/// </summary>
 	void run();
 	static GameMode s_currentMode; // current game mode
+	static bool m_exitGame; // control exiting game
 	
 
 private:
@@ -53,10 +62,11 @@ private:
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_gameFont; // font used by message
-	bool m_exitGame; // control exiting game
+	
 
 	Licence m_licence;
 	Splash m_splash;
+	Menu m_menu;
 	
 };
 
