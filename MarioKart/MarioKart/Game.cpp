@@ -9,19 +9,19 @@
 #include <iostream>
 
 
-
+GameMode Game::s_currentMode = GameMode::Licence;
 /// <summary>
 /// default constructor
 /// setup the window properties
 /// load and setup the text 
-/// load and setup thne image
+/// load and setup the image
 /// </summary>
 Game::Game() :
 	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
-	
+	m_licence.intialise(m_gameFont);
 }
 
 /// <summary>
@@ -73,7 +73,7 @@ void Game::processEvents()
 		{
 			m_exitGame = true;
 		}
-		switch (m_currentMode)
+		switch (s_currentMode)
 		{
 		case GameMode::None:
 			break;
@@ -117,11 +117,12 @@ void Game::update(sf::Time t_deltaTime)
 {
 	
 
-	switch (m_currentMode)
+	switch (s_currentMode)
 	{
 	case GameMode::None:
 		break;
 	case GameMode::Licence:
+		m_licence.update(t_deltaTime);
 		break;
 	case GameMode::Splash:
 		break;
@@ -143,12 +144,13 @@ void Game::update(sf::Time t_deltaTime)
 /// </summary>
 void Game::render()
 {
-	m_window.clear(sf::Color::White);
-	switch (m_currentMode)
+	m_window.clear(sf::Color::Black);
+	switch (s_currentMode)
 	{
 	case GameMode::None:
 		break;
 	case GameMode::Licence:
+		m_licence.render(m_window);
 		break;
 	case GameMode::Splash:
 		break;

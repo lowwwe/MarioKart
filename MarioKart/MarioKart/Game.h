@@ -10,6 +10,11 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#include "Licence.h"
+
+const int WIDTH = 800;
+const int HEIGHT = 600;
+
 
 enum class GameMode
 {
@@ -32,6 +37,8 @@ public:
 	/// main method for game
 	/// </summary>
 	void run();
+	static GameMode s_currentMode; // current game mode
+	
 
 private:
 
@@ -47,8 +54,8 @@ private:
 	sf::Font m_gameFont; // font used by message
 	bool m_exitGame; // control exiting game
 
-
-	GameMode m_currentMode{ GameMode::Licence }; // current game mode
+	Licence m_licence;
+	
 };
 
 #endif // !GAME_HPP
