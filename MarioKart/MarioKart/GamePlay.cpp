@@ -13,11 +13,13 @@ void GamePlay::initialise()
 	float scaleY = static_cast<float>(HEIGHT) / m_backbroundTexture.getSize().y;
 	m_backgroundSprite.setScale(scaleX, scaleY);
 	m_backgroundSprite.setPosition(0.0f, 0.0f);
+	m_player.initialise();
 }
 
 void GamePlay::render(sf::RenderWindow& t_window)
 {
 	t_window.draw(m_backgroundSprite);
+	m_player.render(t_window);
 }
 
 void GamePlay::processEvents(sf::Event t_event)
@@ -26,4 +28,10 @@ void GamePlay::processEvents(sf::Event t_event)
 
 void GamePlay::update(sf::Time t_deltaTime)
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	{
+		m_player.right();
+	}
+
+	m_player.update(t_deltaTime);
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "Player.h"
 
 class GamePlay
 {
@@ -13,7 +14,7 @@ public:
 private:
 	sf::Texture m_backbroundTexture;// background texture
 	sf::Sprite m_backgroundSprite; // background sprite
-	// player
+	Player m_player;// player
 
 };
 

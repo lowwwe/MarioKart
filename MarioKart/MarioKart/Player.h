@@ -4,6 +4,7 @@
 
 class Player
 {
+public:
 	void initialise();
 	void render(sf::RenderWindow& t_window);
 	void update(sf::Time t_deltaTime);
@@ -18,6 +19,7 @@ private:
 	sf::Texture m_playerTexture; // texture for player
 	sf::Sprite m_playerSprite;// sprite for player
 	sf::Vector2f m_playerLocation;// location of p[layer
-	float m_roadLevel;// road height
+	float m_roadLevel{ 420.0f };// road height
+	float m_speed{1.0f}; // speed of movement
 };
 

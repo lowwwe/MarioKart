@@ -94,6 +94,7 @@ void Game::processEvents()
 			m_help.processEvents(newEvent);
 			break;
 		case GameMode::GamePlay:
+			m_gamePlay.processEvents(newEvent);
 			break;
 		case GameMode::Pause:
 			break;
@@ -143,6 +144,7 @@ void Game::update(sf::Time t_deltaTime)
 		m_help.update(t_deltaTime);
 		break;
 	case GameMode::GamePlay:
+		m_gamePlay.update(t_deltaTime);
 		break;
 	case GameMode::Pause:
 		break;
