@@ -26,6 +26,7 @@ Game::Game() :
 	m_splash.initialise(m_gameFont);
 	m_menu.initialise(m_gameFont);
 	m_help.initalise(m_gameFont);
+	m_gamePlay.initialise();
 }
 
 /// <summary>
@@ -173,6 +174,7 @@ void Game::render()
 		m_help.render(m_window);
 		break;
 	case GameMode::GamePlay:
+		m_gamePlay.render(m_window);
 		break;
 	case GameMode::Pause:
 		break;

@@ -21,6 +21,7 @@ const int HEIGHT = 600;
 #include "Splash.h"
 #include "Menu.h"
 #include "Help.h"
+#include "GamePlay.h"
 
 
 
@@ -69,6 +70,7 @@ private:
 	Splash m_splash;
 	Menu m_menu;
 	Help m_help;
+	GamePlay m_gamePlay;
 	
 };
 
