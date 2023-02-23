@@ -16,5 +16,6 @@ private:
 	sf::Sprite m_backgroundSprite; // background sprite
 	Player m_player;// player
 	bool m_jumpKeyPressed{ false }; // has the player decided to jump
+	int m_jumpWait{ 0 };// wait for next jump
 };
 

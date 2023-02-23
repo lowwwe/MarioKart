@@ -97,6 +97,7 @@ void Game::processEvents()
 			m_gamePlay.processEvents(newEvent);
 			break;
 		case GameMode::Pause:
+			pauseProcessEvents(newEvent);
 			break;
 		default:
 			break;
@@ -115,6 +116,17 @@ void Game::processKeys(sf::Event t_event)
 	if (sf::Keyboard::Escape == t_event.key.code)
 	{
 		m_exitGame = true;
+	}
+}
+
+void Game::pauseProcessEvents(sf::Event t_event)
+{
+	if (sf::Event::KeyPressed == t_event.type)
+	{
+		if (sf::Keyboard::Return == t_event.key.code)
+		{
+			Game::s_currentMode = GameMode::GamePlay;
+		}
 	}
 }
 
@@ -179,6 +191,7 @@ void Game::render()
 		m_gamePlay.render(m_window);
 		break;
 	case GameMode::Pause:
+		m_gamePlay.render(m_window);
 		break;
 	default:
 		break;

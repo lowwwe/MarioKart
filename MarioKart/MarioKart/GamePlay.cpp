@@ -26,10 +26,14 @@ void GamePlay::processEvents(sf::Event t_event)
 {
 	if (sf::Event::KeyPressed == t_event.type)
 	{
-		if(sf::Keyboard::Up == t_event.key.code)
+		if(sf::Keyboard::Up == t_event.key.code && m_jumpWait == 0)
 		{
 			m_jumpKeyPressed = true;
 		} 
+		if (sf::Keyboard::Escape == t_event.key.code)
+		{
+			Game::s_currentMode = GameMode::Pause;
+		}
 	}
 }
 
@@ -53,5 +57,10 @@ void GamePlay::update(sf::Time t_deltaTime)
 	{
 		m_player.jump();
 		m_jumpKeyPressed = false;
+		m_jumpWait = 35; // half a second
+	}
+	if (m_jumpWait > 0)
+	{
+		m_jumpWait--;
 	}
 }
