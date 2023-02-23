@@ -24,6 +24,13 @@ void GamePlay::render(sf::RenderWindow& t_window)
 
 void GamePlay::processEvents(sf::Event t_event)
 {
+	if (sf::Event::KeyPressed == t_event.type)
+	{
+		if(sf::Keyboard::Up == t_event.key.code)
+		{
+			m_jumpKeyPressed = true;
+		} 
+	}
 }
 
 void GamePlay::update(sf::Time t_deltaTime)
@@ -32,10 +39,19 @@ void GamePlay::update(sf::Time t_deltaTime)
 	{
 		m_player.right();
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	{
+		m_player.left();
+	}
 	m_player.update(t_deltaTime);
 	if (m_player.departed())
 	{
 		Game::s_currentMode = GameMode::Menu;
 		m_player.resetPosition();
+	}
+	if (m_jumpKeyPressed)
+	{
+		m_player.jump();
+		m_jumpKeyPressed = false;
 	}
 }

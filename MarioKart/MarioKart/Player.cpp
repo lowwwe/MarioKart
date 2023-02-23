@@ -19,25 +19,42 @@ void Player::render(sf::RenderWindow& t_window)
 
 void Player::update(sf::Time t_deltaTime)
 {
+	fall();
 	m_playerSprite.setPosition(m_playerLocation);
 }
 
 void Player::jump()
 {
+	m_playerLocation.y -= 100.0f;
+	m_playerSprite.setPosition(m_playerLocation);
 }
 
 void Player::fall()
 {
+	if (m_playerLocation.y < m_roadLevel)
+	{
+		m_playerLocation.y += 1.4f;
+	}
 }
 
 void Player::left()
 {
+	m_playerLocation.x -= m_speed;
+	if (m_playerSprite.getScale().x == 1.0f)
+	{
+		m_playerSprite.setScale(-1.0f, 1.0f);
+		m_playerLocation.x += 118.0f;
+	}
 }
 
 void Player::right()
 {
 	m_playerLocation.x += m_speed;
-
+	if (m_playerSprite.getScale().x == -1.0f)
+	{
+		m_playerSprite.setScale(1.0f, 1.0f);
+		m_playerLocation.x -= 118.0f;
+	}
 
 }
 

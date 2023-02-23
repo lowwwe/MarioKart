@@ -15,6 +15,6 @@ private:
 	sf::Texture m_backbroundTexture;// background texture
 	sf::Sprite m_backgroundSprite; // background sprite
 	Player m_player;// player
-
+	bool m_jumpKeyPressed{ false }; // has the player decided to jump
 };
 
