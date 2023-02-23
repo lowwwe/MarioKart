@@ -32,6 +32,10 @@ void GamePlay::update(sf::Time t_deltaTime)
 	{
 		m_player.right();
 	}
-
 	m_player.update(t_deltaTime);
+	if (m_player.departed())
+	{
+		Game::s_currentMode = GameMode::Menu;
+		m_player.resetPosition();
+	}
 }

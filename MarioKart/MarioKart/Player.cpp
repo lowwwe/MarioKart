@@ -9,9 +9,7 @@ void Player::initialise()
 		std::cout << "problem with player" << std::endl;
 	}
 	m_playerSprite.setTexture(m_playerTexture);
-	float posX = WIDTH / 2.0f;
-	m_playerLocation = sf::Vector2f(posX, m_roadLevel);
-	m_playerSprite.setPosition(m_playerLocation);
+	resetPosition();
 }
 
 void Player::render(sf::RenderWindow& t_window)
@@ -45,9 +43,16 @@ void Player::right()
 
 bool Player::departed()
 {
+	if (m_playerLocation.x < 0 || m_playerLocation.x > WIDTH)
+	{
+		return true;
+	}
 	return false;
 }
 
 void Player::resetPosition()
 {
+	float posX = WIDTH / 2.0f;
+	m_playerLocation = sf::Vector2f(posX, m_roadLevel);
+	m_playerSprite.setPosition(m_playerLocation);
 }
